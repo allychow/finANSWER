@@ -15,10 +15,24 @@ vision.documentTextDetection({ source: { filename: fileName } })
     .then((results) => {
     const fullTextAnnotation = results[0].fullTextAnnotation;
 
-var regexFixed = "[\\d]{1,5}\\.[\\d][\\d]"
-console.log(fullTextAnnotation.text.match(/[\d]{1,5}\.[\d][\d]/g));
 
-console.log(fullTextAnnotation.text.match(/[-|\][A-Z]{3,9}|\s/g));
+
+var price =  fullTextAnnotation.text.replace(/^(?!SUBTOTAL|TOTAL|CASH|HST|GST|QST|DUE|CHANGE|TEND$).+/gm,"");
+var names = fullTextAnnotation.text.replace(/^(SUBTOTAL|TOTAL|CASH|HST|GST|QST|DUE|CHANGE DUE|CHANGE|TEND|\r\n$)/gm,"");
+names = names.replace(/\n/g,"");
+names = names.replace(/\s/g,"");
+
+var nameList =[];
+var priceList=[];
+for(var i=0;i<10000;i++){
+    nameList = fullTextAnnotation.text.match(/[\d]{1,5}\.[\d][\d]/g);
+}
+for(var i=0;i<10000;i++){
+    priceList = names.match(/[-|\][A-Z]{3,9}|\s/g);
+}
+console.log(nameList);
+console.log(priceList);
+
 
 
 })
