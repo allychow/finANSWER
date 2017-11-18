@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
-import TableExamplePagination from '../ExpenseList/ExpenseList.js'
-import ButtonAddExpense from '../ButtonAddExpense/ButtonAddExpense.js'
+import ExpenseTable from '../ExpenseTable/ExpenseTable.js'
+import AddExpenseButton from '../Buttons/AddExpenseButton.js'
 import Friends from '../Friends/Friends.js'
 
 export default class MenuExampleSecondaryPointing extends Component {
@@ -25,17 +25,17 @@ export default class MenuExampleSecondaryPointing extends Component {
         </Menu>
 
         <Segment>
-          <TableExamplePagination>
-          </TableExamplePagination>
-          <ButtonAddExpense>
-          </ButtonAddExpense>
+          <ExpenseTable>
+          </ExpenseTable>
+          <AddExpenseButton>
+          </AddExpenseButton>
         </Segment>
-
+{/* 
         <Segment>
           <Friends>
           </Friends>
   
-        </Segment>
+        </Segment> */}
       
       </div>
     )

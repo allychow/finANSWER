@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
   //and remove cacheing so we get the most recent comments
   res.setHeader('Cache-Control', 'no-cache');
   next();
@@ -43,11 +43,11 @@ router.get('/', function(req, res) {
   res.json({ message: 'API Initialized!'});
 });
 
-//adding the /comments route to our /api router
+//adding the /expenses route to our /api router
 router.route('/expenses')
-  //retrieve all comments from the database
+  //retrieve all expenses from the database
   .get(function(req, res) {
-    //looks at our Comment Schema
+    //looks at our Expense Schema
     Expense.find(function(err, expenses) {
       if (err)
         res.send(err);

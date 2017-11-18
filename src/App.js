@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Header from './Header1/Header.js'
+import Header from './Header/Header.js'
 import SidebarLeftOverlay from './Sidebar/Sidebar1.js';
-// import Header from './Header/Header.js';
 import Login from './Login/Login.js';
 
 
@@ -12,10 +11,9 @@ class App extends Component {
        
         <Header>
         </Header>
+        <Login></Login>
         <SidebarLeftOverlay>
         </SidebarLeftOverlay>
-        
-        <Login></Login>
       </div>
     );
   }
