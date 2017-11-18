@@ -15,8 +15,6 @@ vision.documentTextDetection({ source: { filename: fileName } })
     .then((results) => {
     const fullTextAnnotation = results[0].fullTextAnnotation;
 
-
-
 var price =  fullTextAnnotation.text.replace(/^(?!SUBTOTAL|TOTAL|CASH|HST|GST|QST|DUE|CHANGE|TEND$).+/gm,"");
 var names = fullTextAnnotation.text.replace(/^(SUBTOTAL|TOTAL|CASH|HST|GST|QST|DUE|CHANGE DUE|CHANGE|TEND|\r\n$)/gm,"");
 names = names.replace(/\n/g,"");
@@ -39,8 +37,6 @@ for(var i=0;i<priceList.length;i++){
 
         indexOfLargestNumber = i;
     }
-
-
 }
 
 priceList[indexOfLargestNumber] = 0;
@@ -49,14 +45,9 @@ for(var i=0;i<priceList.length;i++){
     if ( parseFloat(priceList[i]) > secondlargestNumber &&  parseFloat(priceList[i]) != 13  ){
         secondlargestNumber = parseFloat(priceList[i]);
     }
-
 }
 
-console.log("Total "   +secondlargestNumber );
-
-
-
-
+console.log("Total "+secondlargestNumber );
 
 })
 .catch((err) => {
