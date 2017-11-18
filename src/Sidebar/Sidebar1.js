@@ -1,59 +1,44 @@
 import React, { Component } from 'react'
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
-import ButtonExampleAttachedEvents from '../ButtonAddExpense/ButtonAddExpense.js'
+import { Menu, Segment } from 'semantic-ui-react'
+import TableExamplePagination from '../ExpenseList/ExpenseList.js'
+import ButtonAddExpense from '../ButtonAddExpense/ButtonAddExpense.js'
+import Friends from '../Friends/Friends.js'
 
+export default class MenuExampleSecondaryPointing extends Component {
+  state = { activeItem: 'expense' }
 
-class SidebarRightScaleDown extends Component {
-  state = { visible: false }
-
-  toggleVisibility = () => this.setState({ visible: !this.state.visible })
-
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  
+  
   render() {
-    const { visible } = this.state
+    const { activeItem } = this.state
+
     return (
       <div>
-        <Button onClick={this.toggleVisibility}>Toggle Visibility</Button>
-        <Sidebar.Pushable as={Segment}>
-          <Sidebar
-            as={Menu}
-            animation='scale down'
-            width='thin'
-            direction='right'
-            visible={visible}
-            icon='labeled'
-            vertical
-            inverted
-          >
-            <Menu.Item name='shop'>
-              <Icon name='shop' />
-              <Button>
-              Expense Page
-              </Button>
-            </Menu.Item>
-            <Menu.Item name='money'>
-              <Icon name='money' />
-              <Button>
-              Owe Page
-              </Button>
-            </Menu.Item>
-            <Menu.Item name='calculator'>
-              <Icon name='calculator' />
-              <Button>
-              Budgeting
-                </Button>
-            </Menu.Item>
-          </Sidebar>
-          <Sidebar.Pusher>
-            <Segment basic>
-              <Header as='h3'>Application Content</Header>
-              <ButtonExampleAttachedEvents>
-              </ButtonExampleAttachedEvents>
-            </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
+        <Menu pointing secondary>
+          <Menu.Item name='Expense Page' active={activeItem === 'expense'} onClick={this.handleItemClick} />
+          <Menu.Item name='Owe Page' active={activeItem === 'owe'} onClick={this.handleItemClick} />
+          <Menu.Item name='Budgeting' active={activeItem === 'budget'} onClick={this.handleItemClick} />
+          <Menu.Menu position='right'>
+            <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItem} />
+          </Menu.Menu>
+        </Menu>
+
+        <Segment>
+          <TableExamplePagination>
+          </TableExamplePagination>
+          <ButtonAddExpense>
+          </ButtonAddExpense>
+        </Segment>
+
+        <Segment>
+          <Friends>
+          </Friends>
+  
+        </Segment>
+      
       </div>
     )
   }
-}
 
-export default SidebarRightScaleDown
+}

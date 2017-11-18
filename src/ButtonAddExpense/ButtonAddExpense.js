@@ -20,27 +20,14 @@ export default class ButtonExampleAttachedEvents extends Component {
     const { log } = this.state
 
     return (
-      <Grid>
-        <Grid.Column width={8}>
-          <Segment attached='top'>
-            The button bellow accepts clicks with mouse and key presses with Space Bar or Enter.
-          </Segment>
+     
           <Button
             attached='bottom'
-            content='Click'
+            content='Add Expense'
             onClick={this.handleClick}
             onKeyPress={this.handleKeyPress}>
-              <i class="cloud icon"></i>
           </Button>
-        </Grid.Column>
-        <Grid.Column width={8}>
-          <Segment>
-            <pre style={{ height: 100, overflowY: 'scroll' }}>
-              {log.map((e, i) => <p key={i}>{e}</p>)}
-            </pre>
-          </Segment>
-        </Grid.Column>
-      </Grid>
+ 
     )
   }
 }
