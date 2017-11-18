@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Expense = require('./model/expenses');
 var Bill = require('./model/bills');
+var Receipt = require('./model/receipts');
 
 //and create our instances
 var app = express();
@@ -98,10 +99,35 @@ router.route('/expenses/:expense_id')
     })
   });
 
+//new
+router.route('/receipts')
+//retrieve all comments from the database
+    .get(function(req, res) {
+        //looks at our Comment Schema
+        Receipt.find(function(err, receipts) {
+            if (err)
+                res.send(err);
+            //responds with a json object of our database comments.
+            res.json(receipts)
+        });
+    })
+    //post new comment to the database
+    .post(function(req, res) {
+        var receipt = new Receipt();
+        (req.body.storeTitle) ? receipt.storeTitle = req.body.storeTitle : null;
+        (req.body.totalCost) ? receipt.totalCost = req.body.totalCost : null;
+
+
+        receipt.save(function(err) {
+            if (err)
+                res.send(err);
+            res.json({ message: 'Receipt successfully added!' });
+        });
+    });
 //Use our router configuration when we call /api
 app.use('/api', router);
 
 //starts the server and listens for requests
 app.listen(port, function() {
-  console.log(`api running on port ${port}`);
+  console.log(api running on port ${port});
 });

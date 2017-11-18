@@ -2,50 +2,46 @@ import React, { Component } from 'react';
 import style from './style';
 import marked from 'marked';
 
-class Expense extends Component {
+class Receipt extends Component {
     constructor(props) {
         super(props);
         this.state = {
             toBeUpdated: false,
             title: '',
-            amount: '',
-            type: ''
+            amount: ''
         };
         //binding all our functions to this class
-        this.deleteExpense = this.deleteExpense.bind(this);
-        this.updateExpense = this.updateExpense.bind(this);
+        this.deleteReceipt = this.deleteReceipt.bind(this);
+        this.updateReceipt = this.updateReceipt.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleTypeChange = this.handleTypeChange.bind(this);
         this.handleAmountChange = this.handleAmountChange.bind(this);
-        this.handleExpenseUpdate = this.handleExpenseUpdate.bind(this);
+        this.handleReceiptUpdate = this.handleReceiptUpdate.bind(this);
     }
-    updateExpense(e) {
+    updateReceipt(e) {
         e.preventDefault();
         //brings up the update field when we click on the update link.
         this.setState({ toBeUpdated: !this.state.toBeUpdated });
     }
-    handleExpenseUpdate(e) {
+    handleReceiptUpdate(e) {
         e.preventDefault();
         let id = this.props.uniqueID;
         //if author or text changed, set it. if not, leave null and our PUT request
         //will ignore it.
         let title = (this.state.title) ? this.state.title : null;
         let amount = (this.state.amount) ? this.state.amount : null;
-        let type = (this.state.type) ? this.state.type : null;
-        let expense = { title: title, amount: amount, type: type };
-        this.props.onCommentUpdate(id, expense);
+        let receipt = { title: title, amount: amount };
+        this.props.onCommentUpdate(id, receipt);
         this.setState({
             toBeUpdated: !this.state.toBeUpdated,
             title: '',
-            amount: '',
-            type: ''
+            amount: ''
         })
     }
-    deleteExpense(e) {
+    deleteReceipt(e) {
         e.preventDefault();
         let id = this.props.uniqueID;
-        this.props.onExpenseDelete(id);
-        console.log('oops deleted');
+        this.props.onReceiptDelete(id);
+        console.log('deleted receipt');
     }
     handleTitleChange(e) {
         this.setState({ title: e.target.value });
@@ -65,10 +61,10 @@ class Expense extends Component {
             <div style={style.comment}>
                 <h3>{this.props.title}</h3>
                 <span dangerouslySetInnerHTML={this.rawMarkup()} />
-                <a style={style.updateLink} href='#' onClick={this.updateExpense}>update</a>
-                <a style={style.deleteLink} href='#' onClick={this.deleteExpense}>delete</a>
+                <a style={style.updateLink} href='#' onClick={this.updateReceipt}>update</a>
+                <a style={style.deleteLink} href='#' onClick={this.deleteReceipt}>delete</a>
                 {(this.state.toBeUpdated)
-                    ? (<form onSubmit={this.handleExpenseUpdate}>
+                    ? (<form onSubmit={this.handleReceiptUpdate}>
                         <input
                             type='text'
                             placeholder='Update title...'
@@ -82,12 +78,6 @@ class Expense extends Component {
                             value={this.state.amount}
                             onChange={this.handleAmountChange} />
                         <input
-                            type='text'
-                            placeholder='Update type...'
-                            style={style.commentFormText}
-                            value={this.state.type}
-                            onChange={this.handleTypeChange} />
-                        <input
                             type='submit'
                             style={style.commentFormPost}
                             value='Update' />
@@ -98,4 +88,4 @@ class Expense extends Component {
     }
 }
 
-export default Expense;
+export default Receipt;
