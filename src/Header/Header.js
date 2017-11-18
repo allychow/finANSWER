@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import './App.css';
+//import './Header.css';
 
 class Header extends Component {
   render() {
     return (
-      <p className="Header">
-          poops
+      <p>
+       Finanswer
       </p>
     );
   }
