@@ -1,34 +1,37 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import axios from 'axios'
 
-const TableExamplePagination = () => (
-  <Table celled>
+class TableExamplePagination extends Component {
+    constructor() {
+        super();
+        this.state = {expenses: []}
+        
+    }
+    componentDidMount() {
+        var th = this;
+        axios.get('http://localhost:3001/api/expenses')
+        .then(function (res) {
+            console.log(res.data);
+            th.setState({expenses:res.data});
+        })
+        .catch(console.log)    
+    }
+    
+    render() {
+        const expensesTableCells = this.state.expenses.map((e) => <Table.Row><Table.Cell>{e.title}</Table.Cell><Table.Cell>{e.amount}</Table.Cell><Table.Cell>{e.type}</Table.Cell></Table.Row>);
+        return (
+    <Table celled>
     <Table.Header>
       <Table.Row>
-        <Table.HeaderCell>Header</Table.HeaderCell>
-        <Table.HeaderCell>Header</Table.HeaderCell>
-        <Table.HeaderCell>Header</Table.HeaderCell>
+        <Table.HeaderCell>Description</Table.HeaderCell>
+        <Table.HeaderCell>Amount</Table.HeaderCell>
+        <Table.HeaderCell>Type of Transaction</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
     <Table.Body>
-      <Table.Row>
-        <Table.Cell>
-          <Label ribbon>First</Label>
-        </Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-      </Table.Row>
+      {expensesTableCells}
     </Table.Body>
 
     <Table.Footer>
@@ -50,6 +53,7 @@ const TableExamplePagination = () => (
       </Table.Row>
     </Table.Footer>
   </Table>
-)
-
+        );
+    }
+}
 export default TableExamplePagination
