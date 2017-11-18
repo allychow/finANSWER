@@ -5,8 +5,8 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var Expense = require('./model/expense');
-var Bill = require('./model/bill');
+var Expense = require('./model/expenses');
+var Bill = require('./model/bills');
 
 //and create our instances
 var app = express();
@@ -41,6 +41,62 @@ app.use(function(req, res, next) {
 router.get('/', function(req, res) {
   res.json({ message: 'API Initialized!'});
 });
+
+//adding the /comments route to our /api router
+router.route('/expenses')
+  //retrieve all comments from the database
+  .get(function(req, res) {
+    //looks at our Comment Schema
+    Expense.find(function(err, expenses) {
+      if (err)
+        res.send(err);
+      //responds with a json object of our database comments.
+      res.json(expenses)
+    });
+  })
+  //post new comment to the database
+  .post(function(req, res) {
+    var expense = new Expense();
+    (req.body.title) ? expense.title = req.body.title : null;
+    (req.body.amount) ? expense.amount = req.body.amount : null;
+    (req.body.type) ? expense.type = req.body.type : null;
+
+    expense.save(function(err) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'Expense successfully added!' });
+    });
+  });
+
+//Adding a route to a specific comment based on the database ID
+router.route('/expenses/:expense_id')
+//The put method gives us the chance to update our comment based on the ID passed to the route
+  .put(function(req, res) {
+    Expense.findById(req.params.expense_id, function(err, expense) {
+      if (err)
+        res.send(err);
+      //setting the new author and text to whatever was changed. If nothing was changed
+      // we will not alter the field.
+      (req.body.title) ? expense.title = req.body.title : null;
+      (req.body.amount) ? expense.amount = req.body.amount : null;
+      (req.body.type) ? expense.type = req.body.type : null;
+      //save comment
+      expense.save(function(err) {
+        if (err)
+          res.send(err);
+        res.json({ message: 'Expense has been updated' });
+      });
+    });
+  })
+  //delete method for removing a comment from our database
+  .delete(function(req, res) {
+    //selects the comment by its ID, then removes it.
+    Expense.remove({ _id: req.params.expense_id }, function(err, expense) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'Expense has been deleted' })
+    })
+  });
 
 //Use our router configuration when we call /api
 app.use('/api', router);
