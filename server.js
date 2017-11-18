@@ -98,6 +98,31 @@ router.route('/expenses/:expense_id')
     })
   });
 
+//new
+router.route('/receipts')
+//retrieve all comments from the database
+    .get(function(req, res) {
+        //looks at our Comment Schema
+        Receipt.find(function(err, receipts) {
+            if (err)
+                res.send(err);
+            //responds with a json object of our database comments.
+            res.json(receipts)
+        });
+    })
+    //post new comment to the database
+    .post(function(req, res) {
+        var receipt = new Receipt();
+        (req.body.storeTitle) ? receipt.storeTitle = req.body.storeTitle : null;
+        (req.body.totalCost) ? receipt.totalCost = req.body.totalCost : null;
+
+
+        receipt.save(function(err) {
+            if (err)
+                res.send(err);
+            res.json({ message: 'Receipt successfully added!' });
+        });
+    });
 //Use our router configuration when we call /api
 app.use('/api', router);
 
