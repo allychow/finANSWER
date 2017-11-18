@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Header from './Header1/Header.js'
-import SidebarLeftOverlay from './Sidebar/Sidebar1.js';
-import Header from './Header/Header.js';
+import MenuExampleSecondaryPointing from './Sidebar/Sidebar1.js';
 import Login from './Login/Login.js';
-
+import TableExamplePagination from './ExpenseList/ExpenseList.js'
 
 class App extends Component {
   render() {
@@ -12,9 +11,9 @@ class App extends Component {
        
         <Header>
         </Header>
-        <SidebarLeftOverlay>
-        </SidebarLeftOverlay>
-        
+        <MenuExampleSecondaryPointing>
+        </MenuExampleSecondaryPointing>
+
         <Login></Login>
       </div>
     );
