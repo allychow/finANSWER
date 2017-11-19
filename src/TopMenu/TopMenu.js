@@ -30,61 +30,6 @@ class TopMenu extends Component {
 
 
   render() {
-    var weatherNetworkBaseUrl = "https://hackathon.pic.pelmorex.com/api";
-    var precipUrl = "https://hackathon.pic.pelmorex.com/api/precip/date?locationcode=CAON0383&locale=en-CA";
-    var dataShort = "https://hackathon.pic.pelmorex.com/api/data/shortterm?locationcode=CAON0383";
-
-    axios.get(weatherNetworkBaseUrl + '/search/string?keyword=London&prov=ON')
-      .then(function (res) {
-        var locationCode = res.data.code;
-        console.log(locationCode);
-      })
-      .catch(console.log)
-
-    axios.get(precipUrl)
-      .then(function (res) {
-        var verylongspeech = res.data.speech;
-        console.log(verylongspeech);
-      })
-      .catch(console.log)
-    axios.get(dataShort)
-      .then(function (res) {
-        var dataValue = res.data;
-        // console.log(dataValue.data);
-        var dataList = [];
-        var suggestionList = [];
-  
-        // for (var i = 0; i < dataValue.length; i++) {
-        //   if (res.dat.period == 3) {
-        //     dataList[i] = dataValue.date;
-        //   }
-        //   if (dataValue.rain >= 0.7) {
-        //     suggestionList[i] = "There will be a high chance of rain today! Please dress appropriately and bring an umbrella in case.";
-        //   }
-        //   if (dataValue.snow >= 0.7) {
-        //     suggestionList[i] = "There will be a high chance of snow today! Please wear a jacket and your winter boots.";
-        //   }
-        // }
-
-        dataValue.data.forEach(function(element) {
-          if (element.period === 3) {
-            dataList.push(element.date);
-          }
-          if (element.rain >= 0.7) {
-            suggestionList.push("There will be a high chance of rain today! Please dress appropriately and bring an umbrella in case.");
-          }
-          if (element.snow >= 0.7) {
-            suggestionList.push("There will be a high chance of snow today! Please wear a jacket and your winter boots.");
-          }
-        }, this);
-        // for (var i = 0; i < dataList.data.length; i++) {
-        //   console.log(dataList[i]);
-        //   console.log(suggestionList[i]);
-        // }
-        //console.log(dataValue);
-      })
-      .catch(console.log)
-
     return (
       <div>
         <Menu pointing secondary>
