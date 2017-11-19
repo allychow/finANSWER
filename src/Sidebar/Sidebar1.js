@@ -5,6 +5,10 @@ import AddExpenseButton from '../Buttons/AddExpenseButton.js'
 import Friends from '../Friends/Friends.js'
 import Login from '../Login/Login.js'
 import Suggestion from '../Suggestion/Suggestion.js'
+import ExpenseBarChart from '../ExpenseTable/ExpenseBarChart.js'
+import OweChart from '../Friends/OweChart.js'
+import ExpensePieChart from '../ExpenseTable/ExpensePieChart.js'
+import SuggestionBarChart from '../Suggestion/SuggestionBarChart.js'
 
 class MenuExampleSecondaryPointing extends Component {
 
@@ -24,7 +28,6 @@ class MenuExampleSecondaryPointing extends Component {
     
     return (
       <div>
-         
         <Menu pointing secondary>
           <Menu.Item name='Expense Page' onClick={this.handleItemClick1} />
           <Menu.Item name='Owe Page' onClick={this.handleItemClick2} />
@@ -45,6 +48,12 @@ class MenuExampleSecondaryPointing extends Component {
     <Segment>
     <ExpenseTable>
     </ExpenseTable>
+
+    <ExpenseBarChart>
+    </ExpenseBarChart>
+    <ExpensePieChart>
+    </ExpensePieChart>
+
     </Segment>});
 }
 handleItemClick2() {
@@ -52,6 +61,8 @@ handleItemClick2() {
   <Segment>
   <Friends>
   </Friends>
+  <OweChart>
+    </OweChart>
   </Segment>});
 }
 handleItemClick3() {
@@ -59,6 +70,8 @@ handleItemClick3() {
   <Segment>
   <Suggestion>
   </Suggestion>
+  <SuggestionBarChart>
+  </SuggestionBarChart>
   </Segment>});
 }
 }
