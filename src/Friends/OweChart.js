@@ -11,13 +11,10 @@ class OweChart extends Component {
 
    render() {
        var data = [
-           {name: 'Page A', YouOwe: 4000, pv: 2400, amt: 2400},
-           {name: 'Page B', YouOwe: 3000, pv: 1398, amt: 2210},
-           {name: 'Page C', YouOwe: 2000, pv: 9800, amt: 2290},
-           {name: 'Page D', YouOwe: 2780, pv: 3908, amt: 2000},
-           {name: 'Page E', YouOwe: 1890, pv: 4800, amt: 2181},
-           {name: 'Page F', YouOwe: 2390, pv: 3800, amt: 2500},
-           {name: 'Page G', YouOwe: 3490, pv: 4300, amt: 2100},
+           {name: 'Allison', YouOwe: 10.55, TheyOwe: 8.66, amt: 2400},
+           {name: 'Colleen', YouOwe: 6.44, TheyOwe: 2.44, amt: 2210},
+           {name: 'Welson', YouOwe: 2.55, TheyOwe: 3.55, amt: 2290},
+           {name: 'Ali', YouOwe: 5.77, TheyOwe: 4.55, amt: 2000},
      ];
        // const data =
        // [{ name: 'a', value: [5, 12] }, {name: 'b', value:[3,25]}];
@@ -30,7 +27,7 @@ class OweChart extends Component {
            <Tooltip/>
            <Legend />
            <Bar dataKey="YouOwe" fill="#ff9999" />
-           <Bar dataKey="pv"fill="#ff4d4d" />
+           <Bar dataKey="TheyOwe"fill="#ff4d4d" />
            </BarChart>
        );
    }

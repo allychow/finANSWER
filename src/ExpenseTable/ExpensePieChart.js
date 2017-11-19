@@ -30,6 +30,7 @@
         return (
                 <PieChart width={800} height={400} onMouseEnter={this.onPieEnter}>
                 <Pie
+                  dataKey="value"
                   isAnimationActive={false}
                   data={data} 
                   cx={300} 

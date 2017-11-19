@@ -12,7 +12,7 @@ const Friends = () => (
       <Image avatar src={Allison} />
       <List.Content>
         <List.Header>Allison</List.Header>
-        Owes:
+        Owes:$10.55
       </List.Content>
       <SendReceiptButton>
       </SendReceiptButton>
@@ -21,7 +21,7 @@ const Friends = () => (
       <Image avatar src={Colleen} />
     <List.Content>
         <List.Header>Colleen</List.Header>
-        Owes:
+        Owes:$6.44
       </List.Content>
       <SendReceiptButton>
       </SendReceiptButton>
@@ -30,7 +30,7 @@ const Friends = () => (
     <Image avatar src={Welson} />
     <List.Content>
         <List.Header>Welson</List.Header>
-        Owes:
+        Owes:$2.55
       </List.Content>
       <SendReceiptButton>
       </SendReceiptButton>
@@ -39,7 +39,7 @@ const Friends = () => (
     <Image avatar src={Ali} />
     <List.Content>
         <List.Header>Ali</List.Header>
-        Owes:
+        Owes:$5.77
       </List.Content>
       <SendReceiptButton>
       </SendReceiptButton>
