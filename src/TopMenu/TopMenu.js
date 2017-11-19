@@ -9,14 +9,21 @@ import ExpenseBarChart from '../ExpenseTable/ExpenseBarChart.js'
 import OweChart from '../Friends/OweChart.js'
 import ExpensePieChart from '../ExpenseTable/ExpensePieChart.js'
 import SuggestionBarChart from '../Suggestion/SuggestionBarChart.js'
+import Total from '../ExpenseTable/Total.js'
 
-class MenuExampleSecondaryPointing extends Component {
+class TopMenu extends Component {
 
   constructor() {
     super();
     this.state = {clicked: false, inputPanel: <Segment>
+      <Total>
+      </Total>
     <ExpenseTable>
     </ExpenseTable>
+    <ExpenseBarChart>
+    </ExpenseBarChart>
+    <ExpensePieChart>
+    </ExpensePieChart>
     </Segment>};
     this.handleItemClick1 = this.handleItemClick1.bind(this);
     this.handleItemClick2 = this.handleItemClick2.bind(this);
@@ -46,14 +53,17 @@ class MenuExampleSecondaryPointing extends Component {
   handleItemClick1() {
     this.setState({clicked: true,inputPanel: 
     <Segment>
+    <Total>
+    </Total>
     <ExpenseTable>
     </ExpenseTable>
+    <div className="row" style="display:inline; width:100%">
 
-    <ExpenseBarChart>
+    <ExpenseBarChart style="width:50%">
     </ExpenseBarChart>
-    <ExpensePieChart>
+    <ExpensePieChart style="width:50%">
     </ExpensePieChart>
-
+</div>
     </Segment>});
 }
 handleItemClick2() {
@@ -78,4 +88,4 @@ handleItemClick3() {
 
 
 
-export default MenuExampleSecondaryPointing;
+export default TopMenu;
