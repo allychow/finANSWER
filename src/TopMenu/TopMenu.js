@@ -32,7 +32,54 @@ class TopMenu extends Component {
 
   
   render() {
+    var weatherNetworkBaseUrl = "https://hackathon.pic.pelmorex.com/api";
+    var precipUrl = "https://hackathon.pic.pelmorex.com/api/precip/date?locationcode=CAON0383&locale=en-CA";
+    var dataShort = "https://hackathon.pic.pelmorex.com/api/data/shortterm?locationcode=CAON0383";
     
+    axios.get(weatherNetworkBaseUrl+'/search/string?keyword=London&prov=ON')
+    .then(function (res) {
+      var locationCode = res.data.code;
+        console.log(locationCode);
+    })
+    .catch(console.log)  
+
+    axios.get(precipUrl)
+    .then(function (res) {
+      var verylongspeech=res.data.speech;
+        console.log(verylongspeech);
+    })
+    .catch(console.log) 
+    axios.get(dataShort)
+    .then(function (res) {
+      var dataValue=res.data;
+        //console.log(dataValue);
+    })
+    .catch(console.log) 
+    
+    weatherPeriodData(){
+    var dataList = [100]; 
+    var suggestionList = [100]; 
+
+    for(var i=0;i<dataValue.length;i++){
+      if(res.dat.period==3){
+        dataList[i]=dataValue.date;
+      }
+        if(dataValue.rain>=0.7){
+          suggestionList[i] = "There will be a high chance of rain today! Please dress appropriately and bring an umbrella in case.";
+        }
+        if(dataValue.snow>=0.7){
+          suggestionList[i] = "There will be a high chance of snow today! Please wear a jacket and your winter boots.";
+        }
+    }
+    for(var i=0;i<dataList.length;i++){
+      console.log(dataList[i]);
+      console.log(suggestionList[i]);
+    }
+    }
+    
+
+
+
     return (
       <div>
         <Menu pointing secondary>
