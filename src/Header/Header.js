@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 class Header extends Component {
   render() {
     return (
-      <p>
-       Finanswer
-      </p>
+      <h1>
+      Finanswer
+      </h1>
     );
   }
 }
