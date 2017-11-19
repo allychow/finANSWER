@@ -9,17 +9,22 @@ import ExpenseBarChart from '../ExpenseTable/ExpenseBarChart.js'
 import OweChart from '../Friends/OweChart.js'
 import ExpensePieChart from '../ExpenseTable/ExpensePieChart.js'
 import SuggestionBarChart from '../Suggestion/SuggestionBarChart.js'
+import Total from '../ExpenseTable/Total.js'
 
-class MenuExampleSecondaryPointing extends Component {
+class TopMenu extends Component {
 
   constructor() {
     super();
-    this.state = {
-      clicked: false, inputPanel: <Segment>
-        <ExpenseTable>
-        </ExpenseTable>
-      </Segment>
-    };
+    this.state = {clicked: false, inputPanel: <Segment>
+      <Total>
+      </Total>
+    <ExpenseTable>
+    </ExpenseTable>
+    <ExpenseBarChart>
+    </ExpenseBarChart>
+    <ExpensePieChart>
+    </ExpensePieChart>
+    </Segment>};
     this.handleItemClick1 = this.handleItemClick1.bind(this);
     this.handleItemClick2 = this.handleItemClick2.bind(this);
     this.handleItemClick3 = this.handleItemClick3.bind(this);
@@ -87,6 +92,7 @@ class MenuExampleSecondaryPointing extends Component {
     )
   }
   handleItemClick1() {
+<<<<<<< HEAD:src/Sidebar/Sidebar1.js
     this.setState({
       clicked: true, inputPanel:
         <Segment>
@@ -123,8 +129,43 @@ class MenuExampleSecondaryPointing extends Component {
         </Segment>
     });
   }
+=======
+    this.setState({clicked: true,inputPanel: 
+    <Segment>
+    <Total>
+    </Total>
+    <ExpenseTable>
+    </ExpenseTable>
+    <div className="row" style="display:inline; width:100%">
+
+    <ExpenseBarChart style="width:50%">
+    </ExpenseBarChart>
+    <ExpensePieChart style="width:50%">
+    </ExpensePieChart>
+</div>
+    </Segment>});
+}
+handleItemClick2() {
+  this.setState({clicked: true,inputPanel: 
+  <Segment>
+  <Friends>
+  </Friends>
+  <OweChart>
+    </OweChart>
+  </Segment>});
+}
+handleItemClick3() {
+  this.setState({clicked: true,inputPanel: 
+  <Segment>
+  <Suggestion>
+  </Suggestion>
+  <SuggestionBarChart>
+  </SuggestionBarChart>
+  </Segment>});
+}
+>>>>>>> 993cf0e06eb5da043fa350d886086fd1f5b57221:src/TopMenu/TopMenu.js
 }
 
 
 
-export default MenuExampleSecondaryPointing;
+export default TopMenu;

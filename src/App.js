@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Segment } from 'semantic-ui-react'
 import Header from './Header/Header.js'
-import SidebarLeftOverlay from './Sidebar/Sidebar1.js';
+import TopMenu from './TopMenu/TopMenu.js';
 import Login from './Login/Login.js';
 import ExpenseTable from './ExpenseTable/ExpenseTable.js'
 import Friends from './Friends/Friends.js'
@@ -12,8 +12,8 @@ class App extends Component {
       <div className="App">
         <Header>
         </Header>
-        <SidebarLeftOverlay>
-        </SidebarLeftOverlay>
+        <TopMenu>
+        </TopMenu>
 
       </div>
     );
