@@ -8,6 +8,9 @@ class ExpenseTable extends Component {
         super();
         this.state = {expenses: [], total: 0};
         this.sum = this.sum.bind(this);
+        this.timer;
+        this.update = this.update.bind(this);
+        this.update()
     }
     componentDidMount() {
         var th = this;
@@ -18,6 +21,19 @@ class ExpenseTable extends Component {
             th.sum();
         })
         .catch(console.log)    
+    }
+
+    update() {
+        var th = this;
+        axios.get('http://localhost:3001/api/expenses')
+        .then(function (res) {
+            console.log(res.data);
+            th.setState({expenses:res.data});
+            th.sum();
+        })
+        .catch(console.log)
+        window.clearTimeout(th.timer)
+        th.timer = window.setTimeout(th.update, 3000) 
     }
 
     sum() {
