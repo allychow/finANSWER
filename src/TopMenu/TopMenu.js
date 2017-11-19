@@ -10,6 +10,7 @@ import OweChart from '../Friends/OweChart.js'
 import ExpensePieChart from '../ExpenseTable/ExpensePieChart.js'
 import SuggestionBarChart from '../Suggestion/SuggestionBarChart.js'
 import Total from '../ExpenseTable/Total.js'
+import axios from 'axios'
 
 class TopMenu extends Component {
 
@@ -52,24 +53,37 @@ class TopMenu extends Component {
     axios.get(dataShort)
       .then(function (res) {
         var dataValue = res.data;
-        var dataList = [100];
-        var suggestionList = [100];
+        // console.log(dataValue.data);
+        var dataList = [];
+        var suggestionList = [];
   
-        for (var i = 0; i < dataValue.length; i++) {
-          if (res.dat.period == 3) {
-            dataList[i] = dataValue.date;
+        // for (var i = 0; i < dataValue.length; i++) {
+        //   if (res.dat.period == 3) {
+        //     dataList[i] = dataValue.date;
+        //   }
+        //   if (dataValue.rain >= 0.7) {
+        //     suggestionList[i] = "There will be a high chance of rain today! Please dress appropriately and bring an umbrella in case.";
+        //   }
+        //   if (dataValue.snow >= 0.7) {
+        //     suggestionList[i] = "There will be a high chance of snow today! Please wear a jacket and your winter boots.";
+        //   }
+        // }
+
+        dataValue.data.forEach(function(element) {
+          if (element.period === 3) {
+            dataList.push(element.date);
           }
-          if (dataValue.rain >= 0.7) {
-            suggestionList[i] = "There will be a high chance of rain today! Please dress appropriately and bring an umbrella in case.";
+          if (element.rain >= 0.7) {
+            suggestionList.push("There will be a high chance of rain today! Please dress appropriately and bring an umbrella in case.");
           }
-          if (dataValue.snow >= 0.7) {
-            suggestionList[i] = "There will be a high chance of snow today! Please wear a jacket and your winter boots.";
+          if (element.snow >= 0.7) {
+            suggestionList.push("There will be a high chance of snow today! Please wear a jacket and your winter boots.");
           }
-        }
-        for (var i = 0; i < dataList.length; i++) {
-          console.log(dataList[i]);
-          console.log(suggestionList[i]);
-        }
+        }, this);
+        // for (var i = 0; i < dataList.data.length; i++) {
+        //   console.log(dataList[i]);
+        //   console.log(suggestionList[i]);
+        // }
         //console.log(dataValue);
       })
       .catch(console.log)
@@ -92,44 +106,6 @@ class TopMenu extends Component {
     )
   }
   handleItemClick1() {
-<<<<<<< HEAD:src/Sidebar/Sidebar1.js
-    this.setState({
-      clicked: true, inputPanel:
-        <Segment>
-          <ExpenseTable>
-          </ExpenseTable>
-
-          <ExpenseBarChart>
-          </ExpenseBarChart>
-          <ExpensePieChart>
-          </ExpensePieChart>
-
-        </Segment>
-    });
-  }
-  handleItemClick2() {
-    this.setState({
-      clicked: true, inputPanel:
-        <Segment>
-          <Friends>
-          </Friends>
-          <OweChart>
-          </OweChart>
-        </Segment>
-    });
-  }
-  handleItemClick3() {
-    this.setState({
-      clicked: true, inputPanel:
-        <Segment>
-          <Suggestion>
-          </Suggestion>
-          <SuggestionBarChart>
-          </SuggestionBarChart>
-        </Segment>
-    });
-  }
-=======
     this.setState({clicked: true,inputPanel: 
     <Segment>
     <Total>
@@ -163,7 +139,6 @@ handleItemClick3() {
   </SuggestionBarChart>
   </Segment>});
 }
->>>>>>> 993cf0e06eb5da043fa350d886086fd1f5b57221:src/TopMenu/TopMenu.js
 }
 
 
