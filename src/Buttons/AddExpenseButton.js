@@ -11,21 +11,20 @@ export default class AddExpenseButton extends Component {
   }
 
   handleClick() {
-    this.setState({clicked: true});
-    if (this.state.clicked === true) {
-      this.setState({inputPanel: <ExpenseForm></ExpenseForm>});
-    }
+      this.setState({clicked: true,inputPanel: <ExpenseForm></ExpenseForm>});
   }
 
   render() {
     return (
       <div>
           {this.state.inputPanel}
+          { !this.state.clicked ? 
           <Button
             attached='bottom'
             content='Add Expense'
             onClick={this.handleClick}>
-          </Button>
+          </Button> : null
+          }
           </div>
     )
   }

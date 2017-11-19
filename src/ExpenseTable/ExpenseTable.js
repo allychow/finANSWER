@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 import axios from 'axios'
+import AddExpenseButton from '../Buttons/AddExpenseButton.js'
 
 class ExpenseTable extends Component {
     constructor() {
@@ -31,7 +32,7 @@ class ExpenseTable extends Component {
         this.setState({total: total});
         console.log(this.state);
     }
-    
+
     render() {
         const expensesTableCells = this.state.expenses.map((e) => <Table.Row><Table.Cell>{e.title}</Table.Cell><Table.Cell>{e.amount}</Table.Cell><Table.Cell>{e.type}</Table.Cell></Table.Row>);
         return (
@@ -55,7 +56,7 @@ class ExpenseTable extends Component {
             //     </div>
             //   </div>
             // </div>
-            
+ <div>           
     <Table celled>        
     <Table.Header>
       <Table.Row>
@@ -69,6 +70,10 @@ class ExpenseTable extends Component {
       {expensesTableCells}
     </Table.Body>
   </Table>
+
+<AddExpenseButton>
+</AddExpenseButton>
+</div>
         );
     }
 }

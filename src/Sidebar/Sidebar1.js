@@ -27,8 +27,6 @@ export default class MenuExampleSecondaryPointing extends Component {
         <Segment>
           <ExpenseTable>
           </ExpenseTable>
-          <AddExpenseButton>
-          </AddExpenseButton>
         </Segment>
 {/* 
         <Segment>
