@@ -9,7 +9,6 @@ import ExpenseBarChart from '../ExpenseTable/ExpenseBarChart.js'
 import OweChart from '../Friends/OweChart.js'
 import ExpensePieChart from '../ExpenseTable/ExpensePieChart.js'
 import SuggestionBarChart from '../Suggestion/SuggestionBarChart.js'
-import Total from '../ExpenseTable/Total.js'
 import axios from 'axios'
 
 class TopMenu extends Component {
@@ -17,8 +16,6 @@ class TopMenu extends Component {
   constructor() {
     super();
     this.state = {clicked: false, inputPanel: <Segment>
-      <Total>
-      </Total>
     <ExpenseTable>
     </ExpenseTable>
     <ExpenseBarChart>
@@ -108,17 +105,13 @@ class TopMenu extends Component {
   handleItemClick1() {
     this.setState({clicked: true,inputPanel: 
     <Segment>
-    <Total>
-    </Total>
+  
     <ExpenseTable>
     </ExpenseTable>
-    <div className="row" style="display:inline; width:100%">
-
-    <ExpenseBarChart style="width:50%">
+    <ExpenseBarChart>
     </ExpenseBarChart>
-    <ExpensePieChart style="width:50%">
+    <ExpensePieChart>
     </ExpensePieChart>
-</div>
     </Segment>});
 }
 handleItemClick2() {

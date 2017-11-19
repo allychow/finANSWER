@@ -57,7 +57,6 @@ class ExpenseForm extends Component {
   <div className="ui right labeled input">
         <label for="amount" className="ui label">$</label>
   <input value={this.state.amount} onChange={this.handleAmountChange} type="text" name="amount" placeholder="Amount" id="amount" />
-  <div className="ui basic label">.00</div>
   </div>
 </div>
         <div className="required field">

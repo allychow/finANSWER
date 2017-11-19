@@ -20,6 +20,9 @@ const style = {
       padding:'3px 10px',
       fontSize:'.85rem'
     },
+    h1:{
+      fontFamily: "bebas"
+    },
     commentForm: {
       margin:'10px',
       display:'flex',
