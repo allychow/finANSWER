@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Button, Grid, Segment } from 'semantic-ui-react'
 import ExpenseForm from '../ExpenseTable/ExpenseForm.js'
+import SendReceiptForm from '../Friends/SendReceiptForm.js'
 
 export default class SendReceiptButton extends Component {
   constructor() {
@@ -11,7 +12,7 @@ export default class SendReceiptButton extends Component {
   }
 
   handleClick() {
-      this.setState({clicked: true});
+      this.setState({clicked: true, inputPanel: <SendReceiptForm></SendReceiptForm>});
   }
 
   render() {

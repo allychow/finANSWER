@@ -31,6 +31,7 @@ class ExpenseTable extends Component {
         });
         this.setState({total: total});
         console.log(this.state);
+
     }
 
     render() {
@@ -57,11 +58,14 @@ class ExpenseTable extends Component {
             //   </div>
             // </div>
  <div>           
+     <h2>
+      Total = {this.state.total}$
+      </h2>
     <Table celled>        
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell>Description</Table.HeaderCell>
-        <Table.HeaderCell>Amount</Table.HeaderCell>
+        <Table.HeaderCell>Amount ($)</Table.HeaderCell>
         <Table.HeaderCell>Type of Transaction</Table.HeaderCell>
       </Table.Row>
     </Table.Header>

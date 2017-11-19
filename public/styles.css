@@ -1,0 +1,10 @@
+@font-face {
+    font-family: bebas;
+    src: url(BEBAS.ttf);
+}
+h1 {
+    padding-top: 2%;
+    font-size: 450%;
+    text-align: center;
+    font-family: bebas;
+}
