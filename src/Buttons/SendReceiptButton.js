@@ -20,7 +20,7 @@ export default class SendReceiptButton extends Component {
           {this.state.inputPanel}
           { !this.state.clicked ? 
           <Button
-            content='Send Recipt'
+            content='Send Receipt'
             onClick={this.handleClick}>
           </Button> : null
           }
