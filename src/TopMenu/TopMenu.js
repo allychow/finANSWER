@@ -73,8 +73,8 @@ handleItemClick3() {
   <Segment>
   <Suggestion>
   </Suggestion>
-  <SuggestionBarChart>
-  </SuggestionBarChart>
+  <ExpenseBarChart>
+  </ExpenseBarChart>
   </Segment>});
 }
 }

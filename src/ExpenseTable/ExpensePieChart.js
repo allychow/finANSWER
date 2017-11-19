@@ -10,8 +10,9 @@
     }
 
     render() {
-        var data = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
-        {name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
+        var data = [{name: 'Groceries', value: 20.65}, {name: 'Takeout', value: 45.1},
+        {name: 'Clothing', value: 132.45}, {name: 'Shoes', value: 226.01}, {name: 'Bubble Tea', value: 15.33},
+        {name: 'Utilities', value: 95.67}];
         var COLORS = ['#e67300', '#ff8000', '#ffa64d', '#ffce99'];
 
         var RADIAN = Math.PI / 180;                    

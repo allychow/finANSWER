@@ -11,13 +11,12 @@ class ExpenseBarChart extends Component {
 
    render() {
        var data = [
-           {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
-           {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
-           {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
-           {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
-           {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
-           {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
-           {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
+           {name: 'Groceries', CurrentSpend: 20.65, TargetSpend: 25, amt: 2400},
+           {name: 'Takeout', CurrentSpend: 45.1, TargetSpend: 10, amt: 2210},
+           {name: 'Clothing', CurrentSpend: 132.45, TargetSpend: 50, amt: 2290},
+           {name: 'Shoes', CurrentSpend: 226.01,TargetSpendpv: 100, amt: 2000},
+           {name: 'Bubble Tea', CurrentSpend: 15.33, TargetSpend: 0, amt: 2181},
+           {name: 'Utilities', CurrentSpend: 95.67, TargetSpend: 80, amt: 2181},
      ];
        // const data =
        // [{ name: 'a', value: [5, 12] }, {name: 'b', value:[3,25]}];
@@ -29,8 +28,8 @@ class ExpenseBarChart extends Component {
            <CartesianGrid strokeDasharray="3 3"/>
            <Tooltip/>
            <Legend />
-           <Bar dataKey="pv" fill=" #ff9999" />
-           <Bar dataKey="uv"fill=" #ff4d4d" />
+           <Bar dataKey="CurrentSpend" fill=" #ff9999" />
+           <Bar dataKey="TargetSpend"fill=" #ff4d4d" />
            </BarChart>
        );
    }
